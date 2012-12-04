@@ -30,6 +30,14 @@
 
         // TextField
         _textField = [[[IASKTextField alloc] initWithFrame:CGRectMake(0, 0, 200, 21)] autorelease];
+        
+        /*
+        UIDatePicker *datePicker = [[[UIDatePicker alloc] init] autorelease ];
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        //[datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+        _textField.inputView = datePicker;
+        */
+        
         _textField.autoresizingMask = UIViewAutoresizingFlexibleWidth |
         UIViewAutoresizingFlexibleBottomMargin |
         UIViewAutoresizingFlexibleLeftMargin;

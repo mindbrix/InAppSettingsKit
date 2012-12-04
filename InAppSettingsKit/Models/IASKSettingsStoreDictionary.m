@@ -45,21 +45,21 @@
 
 - (void)setObject:(id)value forKey:(NSString *)key
 {
-    NSLog( @"IASKSettingsStoreDictionary: setObject %@ forKey:%@", value, key );
+    //NSLog( @"IASKSettingsStoreDictionary: setObject %@ forKey:%@", value, key );
     
     [_dictionary setObject:value forKey:key];
 }
 
 - (id)objectForKey:(NSString *)key
 {
-    NSLog( @"IASKSettingsStoreDictionary: objectForKey: %@", key );
+    //NSLog( @"IASKSettingsStoreDictionary: objectForKey: %@", key );
     
     return [_dictionary objectForKey:key];
 }
 
 - (BOOL)synchronize
 {
-    NSLog( @"IASKSettingsStoreDictionary: synchronize" );
+    //NSLog( @"IASKSettingsStoreDictionary: synchronize" );
     
     return YES;
     //return [_dictionary writeToFile:_filePath atomically:YES];

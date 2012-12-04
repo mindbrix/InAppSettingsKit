@@ -69,6 +69,10 @@
 	return [self.settingsReader titleForStringId:[_specifierDict objectForKey:key]];
 }
 
+- (NSString*)dateFormat {
+    return [self localizedObjectForKey:kIASKDateFieldFormatSpecifier];
+}
+
 - (NSString*)title {
     return [self localizedObjectForKey:kIASKTitle];
 }

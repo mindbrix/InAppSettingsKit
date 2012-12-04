@@ -21,6 +21,7 @@
     NSString *_key;
 }
 
+@property (nonatomic, retain) NSString *dateFormat;
 @property (nonatomic, retain) NSString *key;
 
 @end

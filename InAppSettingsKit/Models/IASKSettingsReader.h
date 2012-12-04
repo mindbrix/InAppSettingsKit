@@ -67,6 +67,8 @@
 #define kIASKTextLabelAlignmentCenter         @"IASKUITextAlignmentCenter"
 #define kIASKTextLabelAlignmentRight          @"IASKUITextAlignmentRight"
 
+#define kIASKDateFieldFormatSpecifier         @"IASKDateFieldFormatSpecifier"
+
 #define kIASKPSGroupSpecifier                 @"PSGroupSpecifier"
 #define kIASKPSToggleSwitchSpecifier          @"PSToggleSwitchSpecifier"
 #define kIASKPSMultiValueSpecifier            @"PSMultiValueSpecifier"

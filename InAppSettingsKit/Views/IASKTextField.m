@@ -23,8 +23,35 @@
 
 - (void)dealloc {
     [_key release], _key = nil;
+    [_dateFormat release];
 	
     [super dealloc];
 }
+
+
+-(void)setDateFormat:(NSString *)dateFormat
+{
+    [ _dateFormat release ];
+    _dateFormat = [ dateFormat retain ];
+    
+    // TODO
+    
+    if( dateFormat && dateFormat.length )
+    {
+        UIDatePicker *datePicker = [[[UIDatePicker alloc] init] autorelease ];
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        [datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+        self.inputView = datePicker;
+    }
+}
+
+
+-(void)datePickerValueChanged:(id)sender
+{
+    NSLog( @"datePickerValueChanged" );
+    
+}
+
+
 
 @end

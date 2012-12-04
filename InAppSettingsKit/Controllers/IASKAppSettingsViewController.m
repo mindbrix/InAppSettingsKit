@@ -555,6 +555,17 @@ CGRect IASKCGRectSwap(CGRect rect);
 			textValue = [NSString stringWithFormat:@"%@", textValue];
 		}
 		IASKTextField *textField = ((IASKPSTextFieldSpecifierViewCell*)cell).textField;
+        
+        NSString *dateFormat = specifier.dateFormat;
+        
+        if( dateFormat && dateFormat.length )
+        {
+            NSLog( @"dateFormat = %@", dateFormat );
+            
+            textField.dateFormat = dateFormat;
+        }
+        
+        
 		textField.text = textValue;
 		textField.key = specifier.key;
 		textField.delegate = self;

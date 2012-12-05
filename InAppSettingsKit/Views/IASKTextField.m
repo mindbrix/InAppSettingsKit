@@ -21,7 +21,8 @@
 
 @synthesize key=_key;
 
-- (void)dealloc {
+- (void)dealloc
+{
     [_key release], _key = nil;
     [_dateFormat release];
 	
@@ -34,13 +35,12 @@
     [ _dateFormat release ];
     _dateFormat = [ dateFormat retain ];
     
-    // TODO
-    
     if( dateFormat && dateFormat.length )
     {
-        UIDatePicker *datePicker = [[[UIDatePicker alloc] init] autorelease ];
+        UIDatePicker *datePicker = [[[ UIDatePicker alloc ] init ] autorelease ];
         datePicker.datePickerMode = UIDatePickerModeDate;
-        [datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [ self addTarget:self action:@selector(dateValueChanged:) forControlEvents:UIControlEventEditingChanged ];
+        [ datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged ];
         self.inputView = datePicker;
     }
 }
@@ -48,8 +48,42 @@
 
 -(void)datePickerValueChanged:(id)sender
 {
-    NSLog( @"datePickerValueChanged" );
+    //NSLog( @"datePickerValueChanged" );
     
+    UIDatePicker *datePicker = sender;
+    
+    NSDateFormatter *dateFormatter = [ NSDateFormatter new ];
+    
+    NSLog( @"dateFormatter.timeStyle: %d", dateFormatter.timeStyle );
+    NSLog( @"dateFormatter.dateStyle: %d", dateFormatter.dateStyle );
+    
+    dateFormatter.locale = [ NSLocale currentLocale ];
+    [ dateFormatter setDateFormat:self.dateFormat ];
+    NSString *datetime = [ dateFormatter stringFromDate:datePicker.date ];
+    [ dateFormatter release ];
+    
+    self.text = datetime;
+    
+    [ self sendActionsForControlEvents:UIControlEventEditingChanged ];
+}
+
+
+-(void)dateValueChanged:(id)sender
+{
+    //NSLog( @"dateValueChanged" );
+    
+    UIDatePicker *datePicker = (UIDatePicker *)self.inputView;
+    
+    NSDateFormatter *dateFormatter = [ NSDateFormatter new ];
+    dateFormatter.locale = [ NSLocale currentLocale ];
+    [ dateFormatter setDateFormat:self.dateFormat ];
+    NSDate *date = [ dateFormatter dateFromString:self.text ];
+    [ dateFormatter release ];
+    
+    if( date && ![ date isEqualToDate:datePicker.date ])
+    {
+        [ datePicker setDate:date animated:YES ];
+    }
 }
 
 

@@ -175,14 +175,18 @@ CGRect IASKCGRectSwap(CGRect rect);
 		[self.tableView selectRowAtIndexPath:selectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
 	}
 	
-	self.navigationItem.rightBarButtonItem = nil;
-	if (_showDoneButton) {
-		UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
-																					target:self 
-																					action:@selector(dismiss:)];
-		self.navigationItem.rightBarButtonItem = buttonItem;
-		[buttonItem release];
-	} 
+    if( ! self.navigationItem.rightBarButtonItems )
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+        if (_showDoneButton) {
+            UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                        target:self
+                                                                                        action:@selector(dismiss:)];
+            self.navigationItem.rightBarButtonItem = buttonItem;
+            [buttonItem release];
+        }
+    }
+	
 	if (!self.title) {
 		self.title = NSLocalizedString(@"Settings", @"");
 	}

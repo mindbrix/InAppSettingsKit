@@ -78,12 +78,20 @@
     dateFormatter.locale = [ NSLocale currentLocale ];
     [ dateFormatter setDateFormat:self.dateFormat ];
     NSDate *date = [ dateFormatter dateFromString:self.text ];
-    [ dateFormatter release ];
     
-    if( date && ![ date isEqualToDate:datePicker.date ])
+    
+    if( !date )
+    {
+        date = [ NSDate date ];
+        self.text = [ dateFormatter stringFromDate:date ];
+    }
+    
+    if( ![ date isEqualToDate:datePicker.date ])
     {
         [ datePicker setDate:date animated:YES ];
     }
+    
+    [ dateFormatter release ];
 }
 
 

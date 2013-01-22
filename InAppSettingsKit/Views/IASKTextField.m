@@ -54,8 +54,8 @@
     
     NSDateFormatter *dateFormatter = [ NSDateFormatter new ];
     
-    NSLog( @"dateFormatter.timeStyle: %d", dateFormatter.timeStyle );
-    NSLog( @"dateFormatter.dateStyle: %d", dateFormatter.dateStyle );
+    //NSLog( @"dateFormatter.timeStyle: %d", dateFormatter.timeStyle );
+    //NSLog( @"dateFormatter.dateStyle: %d", dateFormatter.dateStyle );
     
     dateFormatter.locale = [ NSLocale currentLocale ];
     [ dateFormatter setDateFormat:self.dateFormat ];

@@ -564,7 +564,7 @@ CGRect IASKCGRectSwap(CGRect rect);
         
         if( dateFormat && dateFormat.length )
         {
-            NSLog( @"dateFormat = %@", dateFormat );
+            //NSLog( @"dateFormat = %@", dateFormat );
             
             textField.dateFormat = dateFormat;
         }
